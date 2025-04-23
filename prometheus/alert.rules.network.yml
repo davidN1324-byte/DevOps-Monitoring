@@ -1,0 +1,14 @@
+groups:
+  - name: network-alerts
+    rules:
+      - alert: HighNetworkTraffic
+        expr: |
+          rate(node_network_receive_bytes_total[1m]) > 10
+          or
+          rate(node_network_transmit_bytes_total[1m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High network traffic on {{ $labels.instance }} ({{ $labels.device }})"
+          description: "Network interface {{ $labels.device }} on instance {{ $labels.instance }} is experiencing sustained traffic exceeding 10 bytes/sec for over 5 minutes."
