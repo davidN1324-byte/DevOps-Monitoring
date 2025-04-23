@@ -1,0 +1,30 @@
+global:
+  resolve_timeout: 1m
+  # SMTP server for sending email notifications is commented out for testing
+  # smtp_smarthost: 'smtp.example.com:587'
+  # smtp_from: 'alertmanager@example.com'
+  # smtp_auth_username: 'your_smtp_username'
+  # smtp_auth_password: 'your_smtp_password'
+
+route:
+  group_by: ['alertname', 'priority']  # Notification grouping
+  group_wait: 5s  # Wait time for grouping notifications
+  group_interval: 1m  # Interval for repeating notifications about a group
+  repeat_interval: 1h  # Interval for repeating notifications about the same alert
+  receiver: 'slack_receiver'  # Name of the receiver to send notifications
+
+receivers:
+  - name: 'slack_receiver'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/ABCD1234'  # Slack webhook URL
+        channel: '#alerts'  # Channel to send alerts to
+        send_resolved: true  # Send notifications about alert resolution
+        title: 'Prometheus Alert'  # Message title
+        text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'  # Message formatting
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname']
