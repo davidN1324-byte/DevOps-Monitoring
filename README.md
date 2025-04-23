@@ -29,7 +29,7 @@ This project demonstrates a complete monitoring and alerting stack using Prometh
 ![📈 Prometheus alert_rules](./assets/prometheus-alert_rules_network.png)
 ![📈 Prometheus alert_rules](./assets/prometheus-alert_rules.png)
 
-![🔔 Slack notification](.assets/slack-alert.png)
+![🔔 Slack notification](./assets/slack-alert.png)
 
 
 ## 🚀 Getting Started
