@@ -1,0 +1,9 @@
+# Global configuration
+global:
+  resolve_timeout: 1m
+  # SMTP server for sending email notifications is commented out for testing
+  # smtp_smarthost: 'smtp.example.com:587'
+  # smtp_from: 'alertmanager@example.com'
+  # smtp_auth_username: 'your_smtp_username'
+  # smtp_auth_password: 'your_smtp_password'
+
