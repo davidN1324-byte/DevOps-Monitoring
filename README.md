@@ -18,7 +18,7 @@ This project demonstrates a complete monitoring and alerting stack using Prometh
 
 ## 🚀 Getting Started
 ```bash
-git clone https://github.com/your_repo.git
+git clone https://github.com/davidN1324-byte/DevOps-Monitoring.git
 cd devops-monitoring
 
 docker-compose build
