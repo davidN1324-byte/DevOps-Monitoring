@@ -21,3 +21,10 @@ receivers:
         send_resolved: true  # Send notifications about alert resolution
         title: 'Prometheus Alert'  # Message title
         text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'  # Message formatting
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname']
