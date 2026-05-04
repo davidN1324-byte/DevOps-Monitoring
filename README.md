@@ -23,3 +23,7 @@ cd devops-monitoring
 
 docker-compose build
 docker-compose up -d
+
+## Cred
+> grafana - admin/admin
+> 
